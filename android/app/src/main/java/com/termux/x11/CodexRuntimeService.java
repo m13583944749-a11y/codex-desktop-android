@@ -112,7 +112,7 @@ public final class CodexRuntimeService extends Service {
         ContextCompat.registerReceiver(this, statusQuery, new IntentFilter(ACTION_QUERY_STATUS), ContextCompat.RECEIVER_NOT_EXPORTED);
         ContextCompat.registerReceiver(this, phoneLiveChanged, new IntentFilter(LiveNotifications.PHONE_CHANGED), ContextCompat.RECEIVER_NOT_EXPORTED);
     }
-    @Override public IBinder onBind(Intent intent) { return null; }
+    @Override public IBinder onBind(Intent intent) { return RuntimePingBinding.bind(intent); }
     @Override public int onStartCommand(Intent intent, int flags, int startId) {
         latestStartId = startId;
         startForeground(1, runtimeNotification());
